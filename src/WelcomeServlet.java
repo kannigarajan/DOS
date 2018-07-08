@@ -1,11 +1,6 @@
-
-
-import java.awt.List;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +10,6 @@ import java.util.ArrayList;
 
 public class WelcomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private InputStream  input   = null;
 	BufferedReader bufReader = null;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");  
@@ -44,15 +38,15 @@ public class WelcomeServlet extends HttpServlet {
 	   ArrayList<String> list = new ArrayList<String>();
 	   String fileName = "";
 	   if(productName.equals("Dairy Products")) {
-		   fileName = "/home/auzmor/Desktop/dairy.txt";
+		   fileName = "/home/auzmor/Desktop/DOSAttack/src/dairy.txt";
 	   }else if(productName.equals("Stationary Items")) {
-		   fileName = "/home/auzmor/Desktop/stationary.txt";
+		   fileName = "/home/auzmor/Desktop/DOSAttack/src/stationary.txt";
 	   }else if(productName.equals("Grocery Items")) {
-		   fileName = "/home/auzmor/Desktop/grocery.txt";
+		   fileName = "/home/auzmor/Desktop/DOSAttack/src/grocery.txt";
 	   }else if(productName.equals("Kitchen Items")) {
-		   fileName = "/home/auzmor/Desktop/kitchen.txt";
+		   fileName = "/home/auzmor/Desktop/DOSAttack/src/kitchen.txt";
 	   }else if(productName.equals("Plastic Items")) {
-		   fileName = "/home/auzmor/Desktop/plastic.txt";
+		   fileName = "/home/auzmor/Desktop/DOSAttack/src/plastic.txt";
 	   }else {
 		    list.add("not found");
 	   }
