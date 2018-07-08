@@ -20,18 +20,26 @@ public class WelcomeServlet extends HttpServlet {
 	    out.println(
 	            "<html>\n" +
 	               "<head><title>products </title></head>\n" +
+	              "<style>"+
+	            "form {"+
+	                "width: 300px;"+
+	                "margin: 300 auto;"+
+	            "}"+
+	           " </style>" +
 	               "<body bgcolor = \"#f0f0f0\">\n" +
+	               "<form>"+
 	                  "<h3> Available Products are :</h3>\n"
 	                 );
 	    for(int n=0;n<list.size();n++) {
 	    out.println(
-	                  "<li> "+ list.get(n)+ "</li>"+
+	                  "<li> "+ list.get(n)+ "</li>"
+	    );}
+	    out.print(
+	               "</form>"+
 	               "</body>" +
 	            "</html>"
 	         );
-	    }
-
-	    System.out.println(list);
+	   
 	    out.close();  
 	}
    ArrayList<String> ProductSearch(String productName){
