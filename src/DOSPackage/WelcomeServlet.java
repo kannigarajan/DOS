@@ -1,4 +1,5 @@
 package DOSPackage;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,12 +8,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import org.apache.log4j.Logger;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;  
 
+/**
+ * The Class WelcomeServlet get a product name from HTML page and shows the result 
+ * 
+ * @author KannigaNatarajan
+ * @version 3.0
+ */
 public class WelcomeServlet extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The bufreader for reading file initializing to null
+	 */
 	BufferedReader bufReader = null;
+	final static Logger logger = Logger.getLogger(WelcomeServlet.class);
+	
+	/*
+	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 * @param request the request
+     * @param response the response
+     * @throws ServletException the servlet exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		logger.debug("Entering the First Dopost Method");
 		response.setContentType("text/html");  
 	    PrintWriter out = response.getWriter();  
 	    String productName = request.getParameter("productname");
@@ -43,9 +69,20 @@ public class WelcomeServlet extends HttpServlet {
 	   
 	    out.close();  
 	}
+   
+   /**
+    * Product search.
+    *
+    * @param productName the product name
+    * @return the array list
+    */
    ArrayList<String> ProductSearch(String productName){
 	   ArrayList<String> list = new ArrayList<String>();
 	   String fileName = "";
+	   Path currentRelativePath = Paths.get("");
+	   String s = currentRelativePath.toAbsolutePath().normalize().toString();
+	   System.out.println("Current relative path is: " + s);
+	 
 	   if(productName.equals("Dairy Products")) {
 		   fileName = "/home/auzmor/Desktop/DOSAttack/src/dairy.txt";
 	   }else if(productName.equals("Stationary Items")) {
@@ -70,6 +107,10 @@ public class WelcomeServlet extends HttpServlet {
 	           }
 	return list;
 	   }
+   
+   /* (non-Javadoc)
+    * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+    */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 this.doPost(request, response);
 	}

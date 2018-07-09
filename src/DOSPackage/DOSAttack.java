@@ -1,8 +1,7 @@
 package DOSPackage;
 
 import java.io.IOException;
-import java.io.PrintStream;
-import java.net.Socket;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,33 +10,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class DOSAttack
+ *  This class implements DOS Attack in the server, it will stop tomcat
+ *  @author KannigaNatarajan
+ *  @version 3.0
  */
 @WebServlet("/DOSAttack")
 public class DOSAttack extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+    
+    /**
+     * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     * @param request the request
+     * @param response the response
+     * @throws ServletException the servlet exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     //Djava.net.preferIPv4Stack=true
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	            try {
 				   String filename = "/home/auzmor/Desktop/tomcat/bin/catalina.sh stop";
 				   Process child = Runtime.getRuntime().exec(filename);
 				   System.out.println(filename+""+child);
-//	            	System.out.println("starting down server ...");
-//	            	try {
-//	            	    Thread.sleep(30000);
-//	            	}
-//	            	catch (Exception excp) {
-//	            		
-//	            	}
-//				       Socket s = new Socket("192.168.1.255", 8015);
-//				       if(s.isConnected()) {
-//			            PrintStream os = new PrintStream(s.getOutputStream(),true);
-//			            os.println("SHUTDOWN");
-//			            s.close();
-//			            System.out.println("Shutting down server ...");
-//			        } else {
-//			        	System.out.println("not connected");
-//			        }
 	            }catch(IOException e) {
 				System.out.println("exception occured"+e);
 			}
@@ -45,6 +40,12 @@ public class DOSAttack extends HttpServlet {
 	}
 
 	/**
+	 * Do post will call doGet method internally to run stand alone
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
