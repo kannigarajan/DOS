@@ -1,5 +1,4 @@
-
-
+package DOSPackage;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,9 +9,6 @@ import javax.servlet.RequestDispatcher;
 
 public class DOSClientServlet extends HttpServlet {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	String[] username = {"user1","user2","user3","user4","user5"};
 	String[] password = {"admin@123","admin@234","admin@345","admin@456","admin@456"};
@@ -40,5 +36,8 @@ public class DOSClientServlet extends HttpServlet {
 	          
 	    out.close();  
 	    } 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 this.doPost(request, response);
+	}
 	}
 

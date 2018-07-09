@@ -1,3 +1,4 @@
+package DOSPackage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -56,7 +57,7 @@ public class WelcomeServlet extends HttpServlet {
 	   }else if(productName.equals("Plastic Items")) {
 		   fileName = "/home/auzmor/Desktop/DOSAttack/src/plastic.txt";
 	   }else {
-		    list.add("not found");
+		   fileName = "/home/auzmor/Desktop/DOSAttack/src/empty.txt";
 	   }
 		   try {
 			bufReader = new BufferedReader(new FileReader(fileName));
@@ -69,4 +70,7 @@ public class WelcomeServlet extends HttpServlet {
 	           }
 	return list;
 	   }
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 this.doPost(request, response);
+	}
 }
